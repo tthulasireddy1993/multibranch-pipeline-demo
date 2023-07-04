@@ -1,6 +1,6 @@
 pipeline {
 
-    // agent {
+    agent any
     //     node {
     //         label 'master'
     //     }
@@ -28,8 +28,8 @@ pipeline {
             steps {
                 checkout([
                     $class: 'GitSCM', 
-                    branches: [[name: '*/main']], 
-                    userRemoteConfigs: [[url: 'https://github.com/spring-projects/spring-petclinic.git']]
+                    branches: [[name: '*/maaster']], 
+                    userRemoteConfigs: [[url: 'https://github.com/RAM50558/multibranch-pipeline-demo.git']]
                 ])
             }
         }
@@ -52,7 +52,7 @@ pipeline {
 
         stage('Build Deploy Code') {
             when {
-                branch 'develop'
+                branch 'master'
             }
             steps {
                 sh """
